@@ -14,60 +14,70 @@
         android:layout_margin="15dp"
         android:background="@drawable/background_searchview"
         app:iconifiedByDefault="false"
-        app:layout_constraintBottom_toTopOf="@id/radioGroup"
+        app:layout_constraintBottom_toTopOf="@id/cl_movie_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:queryBackground="@android:color/transparent"
         app:queryHint="영화 제목을 검색해보세요" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:orientation="horizontal"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_movie_list"
+        android:layout_width="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/sv_search">
 
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/rb_play"
-            android:layout_width="wrap_content"
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_marginStart="5dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:button="@null"
-            android:checked="true"
-            android:fontFamily="@font/jalnan"
-            android:text="상영중인 영화"
-            android:textColor="@drawable/selector_radio_text" />
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toTopOf="@id/rv_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/rb_tobe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:background="@android:color/transparent"
-            android:button="@null"
-            android:fontFamily="@font/jalnan"
-            android:text="개봉 예정 영화"
-            android:textColor="@drawable/selector_radio_text" />
-    </RadioGroup>
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rb_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:button="@null"
+                android:checked="true"
+                android:fontFamily="@font/jalnan"
+                android:text="상영중인 영화"
+                android:textColor="@drawable/selector_radio_text" />
 
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rb_tobe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:background="@android:color/transparent"
+                android:button="@null"
+                android:fontFamily="@font/jalnan"
+                android:text="개봉 예정 영화"
+                android:textColor="@drawable/selector_radio_text" />
+        </RadioGroup>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_content"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginBottom="50dp"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radioGroup"
-        tools:listitem="@layout/home_item" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/radioGroup"
+            tools:listitem="@layout/home_item" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

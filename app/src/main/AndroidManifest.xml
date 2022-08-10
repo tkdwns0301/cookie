@@ -13,7 +13,8 @@
         android:theme="@style/Theme.Cookie">
         <activity
             android:name=".view.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustNothing">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
