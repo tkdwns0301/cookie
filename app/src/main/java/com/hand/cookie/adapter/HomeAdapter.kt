@@ -1,16 +1,20 @@
 package com.hand.cookie.adapter
 
 import android.content.Context
+import android.content.Intent
+import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.hand.cookie.R
 import com.hand.cookie.data.Movie
 import com.hand.cookie.databinding.HomeItemBinding
+import com.hand.cookie.view.DetailActivity
 import kotlin.math.roundToInt
 
 class HomeAdapter(
@@ -35,14 +39,26 @@ class HomeAdapter(
         }
 
         holder.title.text = "${movie.title}"
+
+        holder.container.setOnClickListener {
+            moveDetail(movie.id)
+            Log.e("MovieID", "${movie.id}")
+        }
     }
 
     override fun getItemCount(): Int {
         return dataSet.size
     }
 
+    private fun moveDetail(movieId: Int) {
+        val intent = Intent(context, DetailActivity::class.java)
+        intent.putExtra("movieId", movieId)
+        context.startActivity(intent)
+    }
+
     class ViewHolder(private val binding: HomeItemBinding) : RecyclerView.ViewHolder(binding.root) {
         val poster: ImageView = binding.ivPoster
         val title: TextView = binding.tvTitle
+        val container: ConstraintLayout = binding.clMovie
     }
 }

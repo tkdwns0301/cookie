@@ -1,5 +1,6 @@
 package com.hand.cookie.service
 
+import com.hand.cookie.data.DetailResponse
 import com.hand.cookie.data.NowPlayingRequest
 import com.hand.cookie.data.NowPlayingResponse
 import retrofit2.Call
@@ -30,4 +31,11 @@ interface MovieService {
         @Query("region") region: String,
         @Query("query") query: String
     ): Call<NowPlayingResponse>
+
+    @GET("movie/{movie_id}/videos")
+    fun getDetail(
+        @Path("movie_id") movie_id: Int,
+        @Query("api_key") api_key: String,
+        @Query("language") language: String,
+    ): Call<DetailResponse>
 }
